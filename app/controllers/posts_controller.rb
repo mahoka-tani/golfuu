@@ -3,8 +3,30 @@ class PostsController < ApplicationController
     def index
         @users = User.all
         @post = Post.new
-        @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-        @postts = params[:tag2_id].present? ? Tag2.find(params[:tag2_id]).posts : Post.all
+     if params[:tag2_id] == nil 
+            if params[:tag_id] == nil
+                @posts = Post.all
+     
+            elsif params[:tag_id] == ''
+                 @posts = Post.all
+     
+            else
+                @posts = Post.where("level LIKE ? ",'%' + params[:tag_id] + '%')
+      
+            end
+    else
+        if params[:tag2_id] == nil
+            @posts = Post.all
+
+        elsif params[:tag2_id] == ''
+            @posts = Post.all
+    
+        else
+            @posts = Post.where("genre LIKE ? ",'%' + params[:tag2_id] + '%')
+        end
+      
+    end
+
     end
 
     def show
@@ -46,6 +68,6 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:comment, :level, :image, :video, tag_ids: [], tag2_ids: [])
+        params.require(:post).permit(:comment, :level, :genre,:image, :video, tag_ids: [], tag2_ids: [])
     end
 end

@@ -1,11 +1,11 @@
 <h1>Golfuu</h1>
 <h3>Posts一覧</h3>
 <% if user_signed_in? %>
-
-   <a rel="nofollow" data-method="delete" href="/users/sign_out">ログアウト</a>
+    
+<%= button_to 'ログアウト', {:controller => "devise/sessions", :action => "destroy"}, {:method => :delete}  %>
   <%= link_to "マイページへ", mypage_path(current_user.id) %>
   <%= link_to "投稿", new_post_path %>
-<% else user_signed_in? %>
+<% else  %>
   <%= link_to 'ログイン', :controller => 'devise/sessions', :action => 'new' %>
   <%= link_to '新規登録', :controller => 'devise/registrations', :action => 'new' %>
 <% end %>
@@ -14,13 +14,17 @@
   
 <div class="posts-container">
   <% @posts.each do |t| %>
-    <%= t.user.image %>
-    
+
+    <%= image_tag t.user.image.to_s ,size: "200"%>
+
     <div class="post">
-      <%= t.level %>
+      レベル：<%= t.level %> <br>
+      ジャンル：<%= t.genre %> <br>
       <%= t.comment %>
       <%= image_tag t.image_url, :size => "300x300" %>
+    
       <% if t.video_url.to_s != nil%>
+
       <%= video_tag t.video_url.to_s, loop: true, controls: true, width: 550 %>
       <% end %>
       <%= t.created_at %>
@@ -54,7 +58,7 @@
 
 <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
       <%= select_tag :tag_id,
-                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                     options_from_collection_for_select(Tag.all, :name, :name, params[:tag_id]),
                      {
                        prompt: 'タグで絞り込み検索',
                        onchange: 'submit(this.form);'
@@ -66,7 +70,7 @@
 
 <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
       <%= select_tag :tag2_id,
-                     options_from_collection_for_select(Tag2.all, :id, :name, params[:tag2_id]),
+                     options_from_collection_for_select(Tag2.all, :name, :name, params[:tag2_id]),
                      {
                        prompt: 'タグで絞り込み検索',
                        onchange: 'submit(this.form);'
@@ -97,3 +101,12 @@
                      }
       %>
     <% end %>
+
+<style>
+.post{
+  border:2px solid black;
+  margin:10px;
+}
+
+
+</style>

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  devise_scope :users do
-    get 'users/sign_out' => 'devise/sessions#destroy'
-  end
   devise_for :users
+
 
   resources :orders
   get 'favorites/create'
