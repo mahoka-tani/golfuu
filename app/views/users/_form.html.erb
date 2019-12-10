@@ -1,0 +1,23 @@
+<div class="check_box">
+    <span>タグ</span>
+    <%= form.collection_check_boxes(:tag3_ids, Tag3.all, :id, :name) do |tag| %>
+     <div>
+       <%= tag.label do %>
+         <%= tag.check_box %>
+         <%= tag.text %>
+       <% end %>
+     </div>
+   <% end %>
+ </div>
+
+<div class="check_box">
+    <span>タグ</span>
+    <%= form.collection_check_boxes(:tag4_ids, Tag4.all, :id, :name) do |tag| %>
+     <div>
+       <%= tag.label do %>
+         <%= tag.check_box %>
+         <%= tag.text %>
+       <% end %>
+     </div>
+   <% end %>
+ </div>

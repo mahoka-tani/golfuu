@@ -1,0 +1,38 @@
+<h1>投稿詳細ページ</h1>
+<h3><%= @post.user.email %></h3>
+<h3><%= @post.comment %></h3>
+
+<h2>コメント一覧</h2>
+<% @advises.each do |c| %>
+  <div>
+    <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
+    <%= c.content %>
+    <hr>
+  </div>
+<% end %>
+
+<%= form_for [@post, @advise] do |f| %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<% @posts.tags.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+
+<% @postts.tag2s.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+
+<% @userrs.tag3s.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+
+<% @userrrs.tag4s.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+
+
+
+<%= link_to "ホームへ戻る", posts_path %>

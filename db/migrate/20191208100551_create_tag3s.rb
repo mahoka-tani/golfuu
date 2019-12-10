@@ -1,0 +1,9 @@
+class CreateTag3s < ActiveRecord::Migration[5.1]
+  def change
+    create_table :tag3s do |t|
+      t.string :name
+
+      t.timestamps
+    end
+  end
+end

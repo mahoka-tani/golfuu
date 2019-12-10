@@ -1,0 +1,29 @@
+<h1>マイページ</h1>
+<h3>ユーザー名</h3>
+<h6><%= @user.email %></h6>
+<%= image_tag @user.image %>
+<h3>現在のベストスコア</h3>
+<h6><%= @user.best_score %></h6>
+<h3>目標スコア</h3>
+<h3>memo(気を付けること)</h3>
+
+
+<h2>投稿内容</h2>
+<% @user.posts.each do |post| %>
+  <a href="/posts/<%= post.id %>"><%= post.comment %></a>
+  <hr>
+<% end %>
+
+<h2>いいね欄</h2>
+<% @favorite_posts.each do |p| %>
+  <hr>
+  <p><span>ファボポスト内容: </span><%=link_to p.comment, post_path(p.id) %></p>
+<% end %>
+
+
+
+
+<%= link_to "投稿", new_post_path %>
+<%= link_to "ホームへ戻る", posts_path %>
+<%= link_to "ユーザー編集ページ", edit_user_registration_path%>
+<%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %>
