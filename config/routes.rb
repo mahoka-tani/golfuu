@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  root "posts#index"
+
+  get 'top/index'
+    root :to => 'top#index'
+  get 'destination/index'
+    root :to => 'destination#index'
+  
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 
   resources :orders
@@ -20,7 +32,5 @@ Rails.application.routes.draw do
   get 'mypage/:id' => 'users#show',as: 'mypage'
   # ログイン、アカウント編集後、任意のページに推移させるための記述
 
-
-  root "posts#index"
 end
 

@@ -5,24 +5,24 @@ class PostsController < ApplicationController
         @post = Post.new
      if params[:tag2_id] == nil 
             if params[:tag_id] == nil
-                @posts = Post.all
+                @posts = Post.all.order("id DESC")
      
             elsif params[:tag_id] == ''
-                 @posts = Post.all
+                 @posts = Post.all.order("id DESC")
      
             else
-                @posts = Post.where("level LIKE ? ",'%' + params[:tag_id] + '%')
+                @posts = Post.where("level LIKE ? ",'%' + params[:tag_id] + '%').order("id DESC")
       
             end
     else
         if params[:tag2_id] == nil
-            @posts = Post.all
+            @posts = Post.all.order("id DESC")
 
         elsif params[:tag2_id] == ''
-            @posts = Post.all
+            @posts = Post.all.order("id DESC")
     
         else
-            @posts = Post.where("genre LIKE ? ",'%' + params[:tag2_id] + '%')
+            @posts = Post.where("genre LIKE ? ",'%' + params[:tag2_id] + '%').order("id DESC")
         end
       
     end
@@ -30,15 +30,17 @@ class PostsController < ApplicationController
     end
 
     def show
-        @post = Post.find(params[:id])
+        @post = Post.find_by(id: params[:id])
         @advises = @post.advises
         @advise = Advise.new
         @posts = Tag.find(params[:id]).posts 
         @postts = Tag2.find(params[:id]).posts 
+        @user = User.find_by(id: @post.user_id)
     end
 
     def new
         @post = Post.new
+        @user = current_user
     end
 
     def create
@@ -64,6 +66,14 @@ class PostsController < ApplicationController
     end
 
     def destroy
+    end
+
+    def ensure_correct_user
+        @post = Post.find_by(id:params[:id])
+        if @post.user_id != @current_user.id
+          flash[:notice] = "権限がありません"
+          redirect_to("/posts/index")
+        end
     end
 
     private

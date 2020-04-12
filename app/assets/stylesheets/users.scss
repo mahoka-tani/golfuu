@@ -1,3 +1,136 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.header-show{
+    color: rgba(255,92,92,1);;
+    display: flex;
+    height: 12vh;
+    font-family: 'Faldano';
+
+    a{
+        position: relative;
+        display: inline-block;
+        font-weight: bold;
+        padding: 0.25em 0.5em;
+        text-decoration: none;
+        border-bottom: solid 3px black;
+        border-left: solid 3px black;
+        color: black;
+        transition: .4s;
+    }
+
+    a:link{
+        color: black;
+    }
+    a:visited{
+        color: black;
+    }
+    a:hover{
+        color:rgba(255,92,92,1);
+        background-color: transparent;
+        }
+}
+
+.header-show1{
+    width: 60vw;
+    text-shadow: 1px 1px 0 black, -1px -1px 0 black,
+                -1px 1px 0 black, 1px -1px 0 black,
+                0px 1px 0 black, 0px -1px 0 black,
+                -1px 0 0 black, 1px 0 0 black;
+}
+.header-show2{
+    color: rgba(255,92,92,1);;
+}
+
+body{
+    background-color: #999999 ;
+}
+
+
+.information{
+    display: flex;
+    height: 75vh;
+}
+
+.score{
+    width: 30vw;
+    text-align: center;
+}
+
+.container{
+    justify-content: space-between;
+}
+
+.memo{
+    width: 35vw;
+    background-color:#E1E1E1;
+    border-radius: 10%; 
+}
+
+.calendar{
+    height: 20vh;
+    background-color:#ffffff;
+}
+
+.img {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+}
+
+div.img {
+   
+    margin-top: 10px;
+}
+
+div.img:hover {
+    background-color: rgba(255,92,92,1);
+    border-radius: 100px;
+
+}
+
+.comment{
+    height: 20%;
+    background-color: #E1E1E1;
+    border-radius: 10%; 
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.comment-container{
+    text-align: center;
+    border:2px solid black;
+    border-radius: 10%;
+    width: 32vw;
+}
+
+.favorite{
+    height: 20%;
+    background-color: #E1E1E1;
+    border-radius: 10%; 
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.favorite-container{
+    text-align: center;
+    border:2px solid black;
+    border-radius: 10%;
+    width: 32vw;
+}
+
+.container-name{
+    color: rgba(255,92,92,1);;
+    font-weight: bold;
+    border-color: black;
+    text-shadow: 0.7px 0.7px 0 black, -0.7px -0.7px 0 black,
+                -0.7px 0.7px 0 black, 0.7px -0.7px 0 black,
+                0px 0.7px 0 black, 0px -0.7px 0 black,
+                -0.7px 0 0 black, 0.7px 0 0 black;
+}
+

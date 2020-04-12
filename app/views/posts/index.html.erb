@@ -1,112 +1,126 @@
-<h1>Golfuu</h1>
-<h3>Posts一覧</h3>
-<% if user_signed_in? %>
-    
-<%= button_to 'ログアウト', {:controller => "devise/sessions", :action => "destroy"}, {:method => :delete}  %>
-  <%= link_to "マイページへ", mypage_path(current_user.id) %>
-  <%= link_to "投稿", new_post_path %>
-<% else  %>
-  <%= link_to 'ログイン', :controller => 'devise/sessions', :action => 'new' %>
-  <%= link_to '新規登録', :controller => 'devise/registrations', :action => 'new' %>
-<% end %>
-
-<%= link_to "ユーザー一覧へ", users_path %>
-  
-<div class="posts-container">
-  <% @posts.each do |t| %>
-
-    <%= image_tag t.user.image.to_s ,size: "200"%>
-
-    <div class="post">
-      レベル：<%= t.level %> <br>
-      ジャンル：<%= t.genre %> <br>
-      <%= t.comment %>
-      <%= image_tag t.image_url, :size => "300x300" %>
-    
-      <% if t.video_url.to_s != nil%>
-
-      <%= video_tag t.video_url.to_s, loop: true, controls: true, width: 550 %>
+<body>
+  <div class="header-index">
+   <div class="index">
+      <h1><%= image_tag 'icon_home.png' ,size: "120"%>Golfuu</h1>
+      <br><br><br>
+      <% if user_signed_in? %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>   
+        <%= link_to "マイページへ", mypage_path(current_user.id) %>
+        &emsp;&emsp;&emsp;&emsp;
+        <%= image_tag 'icon_pen.png' ,size: "50"%><%= link_to "投稿", new_post_path %>
+      <% else  %>
+        <a><%= link_to 'ログイン', :controller => 'devise/sessions', :action => 'new' %></a>
+        <a><%= link_to '新規登録', :controller => 'devise/registrations', :action => 'new' %></a>
       <% end %>
-      <%= t.created_at %>
-      <%= link_to "詳細へ", post_path(t.id) %>
+   </div>  
+
+   <div class="space"></div>
+   <div clas='tag1'>
+      <h2><%= image_tag 'icon_search1.png',size: "60" %>"あなたの目標から"</h2>
+
+      <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag_id,
+                          options_from_collection_for_select(Tag.all, :name, :name, params[:tag_id]),
+                          {
+                            prompt: 'タグで絞り込み検索',
+                            onchange: 'submit(this.form);'
+                          }
+            %>
+      <% end %><br>
+
+      <h2><%= image_tag 'icon_search1.png',size: "60" %>"あなたのお悩み"から</h2>
+
+      <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag2_id,
+                          options_from_collection_for_select(Tag2.all, :name, :name, params[:tag2_id]),
+                          {
+                            prompt: 'タグで絞り込み検索',
+                            onchange: 'submit(this.form);'
+                          }
+            %>
+      <% end %><br>
     </div>
+    <div class="space"></div>
+    <div clas='tag2'>
+      <h2><%= image_tag 'icon_search2.png',size: "60" %>"あなたの年齢"から</h2>
 
-      <!-- 追加 -->
-    <% if user_signed_in? %>
-      <% if t.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
-          <p><span>お気に入り解除: </span><%=link_to t.favorites.count, post_post_favorites_path(t.id), method: :delete %></p>
-      <% else %>
-          <p><span>お気に入り登録: </span><%=link_to t.favorites.count, post_post_favorites_path(t.id), method: :post %></p>
-      <% end %>
-    <% else %>
-      <p><span>お気に入り数: </span><%= t.favorites.count %></p>
+      <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag3_id,
+                          options_from_collection_for_select(Tag3.all, :id, :name, params[:tag3_id]),
+                          {
+                            prompt: 'タグで絞り込み検索',
+                            onchange: 'submit(this.form);'
+                          }
+            %>
+      <% end %><br>
+
+      <h2><%= image_tag 'icon_search2.png' ,size: "60"%>"あなたの性別"から</h2>
+
+      <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag4_id,
+                          options_from_collection_for_select(Tag4.all, :id, :name, params[:tag4_id]),
+                          {
+                            prompt: 'タグで絞り込み検索',
+                            onchange: 'submit(this.form);'
+                          }
+            %>
+      <% end %><br>
+    </div>
+  </div>
+  <hr>
+ <div class="body2">  
+  <div class="posts-container">
+    
+      <% @posts.each do |t| %>
+      <div class="post">
+        <div class="post1">
+          <br>&emsp;&emsp;
+          <h2><%= image_tag t.user.image.to_s ,size: "90"%>
+          <%= t.user.name%></h2>
+          <br>
+          <%= image_tag 'icon_link.png',size: "25" %>
+          レベル：<%= t.level %> <br>
+          <%= image_tag 'icon_link.png' ,size: "25"%>
+          ジャンル：<%= t.genre %> <br>
+          <% if t.image_url != nil %>
+            &emsp;<%= image_tag t.image_url, :size => "300" %>
+          <% elsif t.video_url != nil  %>
+            &emsp;<%= video_tag t.video_url.to_s, loop: true, controls: true, width: 200 %>  
+          <% end %><br>
+          <br>
+        </div>
+        <div class="post2">
+          <br><br><br><br><br>
+          <%= image_tag 'icon_memo.png',size: "50" %>
+          <%= t.comment %>
+          <br>
+          <!-- 追加 -->
+          <% if user_signed_in? %>
+            <% if t.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+                <p><span><%= image_tag 'icon_favorite.png' ,size: "40"%>お気に入り解除: </span><%=link_to t.favorites.count, post_post_favorites_path(t.id), method: :delete %></p>
+            <% else %>
+                <p><span><%= image_tag 'icon_favorite.png' ,size: "40"%>お気に入り登録: </span><%=link_to t.favorites.count, post_post_favorites_path(t.id), method: :post %></p>
+            <% end %>
+          <% else %>
+            <p><span>お気に入り数: </span><%= t.favorites.count %></p>
+          <% end %>
+          <%= link_to "コメントする", post_path(t.id) %>
+          <%= t.created_at %>
+        </div>
+     </div>
+    <!-- ここまで -->
+    <% t.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %> 
+
+    <% t.tag2s.each do |tag| %>
+      <%= tag.name %>
+    <% end %> 
+    
+
     <% end %>
-  <!-- ここまで -->
-  <% t.tags.each do |tag| %>
-    <%= tag.name %>
-  <% end %> 
-
-  <% t.tag2s.each do |tag| %>
-    <%= tag.name %>
-  <% end %> 
-  
-
-  <% end %>
-</div>
-
-<h2>"あなたの目標から"絞り込み検索</h2>
-
-<%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
-      <%= select_tag :tag_id,
-                     options_from_collection_for_select(Tag.all, :name, :name, params[:tag_id]),
-                     {
-                       prompt: 'タグで絞り込み検索',
-                       onchange: 'submit(this.form);'
-                     }
-      %>
-    <% end %>
-
-<h2>"あなたのお悩み"から</h2>
-
-<%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
-      <%= select_tag :tag2_id,
-                     options_from_collection_for_select(Tag2.all, :name, :name, params[:tag2_id]),
-                     {
-                       prompt: 'タグで絞り込み検索',
-                       onchange: 'submit(this.form);'
-                     }
-      %>
-    <% end %>
-
-<h2>"あなたの年齢"から</h2>
-
-<%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
-      <%= select_tag :tag3_id,
-                     options_from_collection_for_select(Tag3.all, :id, :name, params[:tag3_id]),
-                     {
-                       prompt: 'タグで絞り込み検索',
-                       onchange: 'submit(this.form);'
-                     }
-      %>
-    <% end %>
-
-<h2>"あなたの性別"から</h2>
-
-<%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
-      <%= select_tag :tag4_id,
-                     options_from_collection_for_select(Tag4.all, :id, :name, params[:tag4_id]),
-                     {
-                       prompt: 'タグで絞り込み検索',
-                       onchange: 'submit(this.form);'
-                     }
-      %>
-    <% end %>
-
-<style>
-.post{
-  border:2px solid black;
-  margin:10px;
-}
+  </div>
+  </div>
 
 
-</style>
+</body>

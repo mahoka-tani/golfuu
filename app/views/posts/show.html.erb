@@ -1,38 +1,35 @@
+<div class="aboutposts">
+<br><br>
 <h1>投稿詳細ページ</h1>
-<h3><%= @post.user.email %></h3>
+<br><br>
+<h2><%= image_tag @post.user.image.to_s ,size: "100"%><%= @post.user.name %></h2>
+<br>
+
+
+
+<% if @post.image_url.to_s != nil %>
+  <%= image_tag @post.image_url.to_s, :size => "400" %>
+<% elsif  @post.video_url.to_s != nil  %>
+  <%= video_tag @post.video_url.to_s, loop: true, controls: true, width: 550 %>  
+<% end %><br>
+
 <h3><%= @post.comment %></h3>
+<br>
 
-<h2>コメント一覧</h2>
-<% @advises.each do |c| %>
-  <div>
-    <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
-    <%= c.content %>
-    <hr>
-  </div>
-<% end %>
-
-<%= form_for [@post, @advise] do |f| %>
-  <%= f.text_field :content %>
-  <br>
-  <%= f.submit 'コメントする' %>
-<% end %>
-
-<% @posts.tags.each do |tag| %>
-    <%= tag.name %>
-<% end %>
-
-<% @postts.tag2s.each do |tag| %>
-    <%= tag.name %>
-<% end %>
-
-<% @userrs.tag3s.each do |tag| %>
-    <%= tag.name %>
-<% end %>
-
-<% @userrrs.tag4s.each do |tag| %>
-    <%= tag.name %>
+<% if @advises != nil %>
+  <h2>コメント一覧</h2>
+  <% @advises.each do |c| %>
+    <div>
+      <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
+      <%= c.content %>
+      <hr>
+    </div>
+  <% end %>
 <% end %>
 
 
-
+<div class="return">
 <%= link_to "ホームへ戻る", posts_path %>
+</div>
+
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191209113902) do
+ActiveRecord::Schema.define(version: 20191223101332) do
 
   create_table "advises", force: :cascade do |t|
     t.string "content"
@@ -22,9 +22,22 @@ ActiveRecord::Schema.define(version: 20191209113902) do
     t.index ["user_id"], name: "index_advises_on_user_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "decription"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,6 +78,7 @@ ActiveRecord::Schema.define(version: 20191209113902) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
   end
 
   create_table "tag2s", force: :cascade do |t|
@@ -123,7 +137,11 @@ ActiveRecord::Schema.define(version: 20191209113902) do
     t.integer "best_score"
     t.string "image"
     t.string "gender"
+    t.text "calendar"
+    t.text "destination"
     t.integer "best_score_future"
+    t.string "uid"
+    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

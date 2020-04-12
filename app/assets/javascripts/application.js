@@ -16,8 +16,29 @@
 
 //= require select2
 
+//= require jquery
+//= require moment
+//= require fullcalendar
+
 // js-selectable クラスをつけたらSELCT2タグになるようにする
 $('.js-searchable').select2({
     width: 200,
     allowClear: true
   });
+
+  $(function () {
+    function eventCalendar() {
+        return $('#calendar').fullCalendar({});
+    };
+    function clearCalendar() {
+        $('#calendar').html('');
+    };
+    $(document).on('turbolinks:load', function () {
+      eventCalendar();
+    });
+    $(document).on('turbolinks:before-cache', clearCalendar);
+
+    $('#calendar').fullCalendar({
+      events: '/events.json'
+    });
+});

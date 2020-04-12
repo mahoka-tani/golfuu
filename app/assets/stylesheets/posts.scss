@@ -1,3 +1,131 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@font-face {
+    font-family: 'Faldano';
+    src: font-url('Faldano.ttf') format('truetype');
+    
+  }
+
+  body{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}  
+
+.header-index{
+    display: flex;
+    justify-content: center;
+}
+
+.index{
+    width: 30%;
+    color:rgba(255,92,92,1);
+    
+    a{
+        position: relative;
+        display: inline-block;
+        font-weight: bold;
+        padding: 0.25em 0.5em;
+        text-decoration: none;
+        border-bottom: solid 3px black;
+        border-left: solid 3px black;
+        color: black;
+        transition: .4s;
+    }
+
+    a:link{
+        color: black;
+    }
+    a:visited{
+        color: black;
+    }
+    a:hover{
+        color:rgba(255,92,92,1);
+        background-color: transparent;
+        }
+}
+
+.index h1{
+    font-family: 'Faldano';
+    font-size: 50px;
+}
+
+
+.tag1{
+    width: 30%;
+}
+
+.space{
+    width: 5%;
+}
+
+.tag2{
+    width: 30%;
+}
+
+body{
+    background-color: #999999;
+    justify-content: center;
+    justify-content: center;
+}
+
+
+.body2{
+    padding-right: 13vw;
+    padding-left: 14vw;
+
+}
+.posts-container{
+    background-color: #E1E1E1;
+    width: 70vw;
+    border-radius: 10%; 
+    justify-content: space-around;
+}
+
+.post{
+    display: flex;
+    border:2px solid black;
+    justify-content: space-around;
+    border-radius: 20%;
+    margin:10px;
+    a:link{
+        color: black;
+    }
+    a:visited{
+        color: black;
+    }
+    a:hover{
+        color:rgba(255,92,92,1);
+        background-color: transparent;
+        }
+}
+
+.post1 h2{
+    font-family: 'Faldano';
+}
+
+.header-new{
+    display: flex;
+    justify-content: space-around;
+}
+
+.return{
+    a:link{
+        color: black;
+    }
+    a:visited{
+        color: black;
+    }
+    a:hover{
+        color:rgba(255,92,92,1);
+        background-color: transparent;
+        }
+}
+
+.aboutposts{
+    text-align: center;
+}
+
+.newbody{
+    padding-left: 10vw;
+}

@@ -1,0 +1,53 @@
+
+<div class="wrap">
+    <%# <div class="video">
+        <video src='top1.mp4, autoplay muted' poster="court-cook-Ssllw_MET0E-unsplash.jpg" ></video>
+    </div> %>
+    <div class="video">
+        <%= video_tag "Golf2.mp4", autoplay: true, loop: true, muted: true %>
+    </div> 
+
+    <div class="wrap2">
+        <div class="recommendation">
+            <div class="space3"></div>
+            <div class="rec">
+            <br><br>
+            ・自分のスイング動画を見比べられる<br><br><br>
+            ・同じ目標を持つ人の練習法を覗き見<br><br><br>
+            ・教えてもらったことを一目でチェック<br><br><br>
+            ・練習した日をmyカレンダーで管理<br><br><br>
+            <br>
+            </div>
+        </div>
+
+        <div id="search-lec">
+            <div class="space1"></div>
+            <h1>Golfuu</h1>
+
+            <div class="space2"></div>
+            <h2>
+            <%= link_to 'ログイン', :controller => 'devise/sessions', :action => 'new' %>
+            &emsp;<%= link_to '新規登録', :controller => 'devise/registrations', :action => 'new' %>
+            &emsp;<%= link_to "facebookで登録する", user_facebook_omniauth_authorize_path  %>
+            </h2>
+        </div>
+
+        <div class="explanation">
+            <div class="space4"></div>
+            <div class="exp">
+            <br><br>
+
+            ・思い通りに上手くなれない<br><br>
+            ・もっと効率的に練習したい<br><br>
+            ・同じレベルのプレーヤーの練習方法を知りたい<br><br>
+            ・なかなかモチベーションが続かない<br><br><br><br><br>
+
+            そんなあなたにおすすめのサービスです。<br><br>
+            完全無料なのでまずは新規登録してみませんか？
+            <br><br><br>
+            </div>
+        </div>
+    </div>
+
+</div>
+

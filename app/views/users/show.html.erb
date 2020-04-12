@@ -1,29 +1,93 @@
-<h1>マイページ</h1>
-<h3>ユーザー名</h3>
-<h6><%= @user.email %></h6>
-<%= image_tag @user.image.to_s  %>
-<h3>現在のベストスコア</h3>
-<h6><%= @user.best_score %></h6>
-<h3>目標スコア</h3>
-<h3>memo(気を付けること)</h3>
+<div class="header-show">
+  <div class="header-show1">
+    <h1><%= image_tag 'icon_person.png' %><%= image_tag @user.image.to_s ,size: "100" %>&emsp;<%= @user.name %></h1>
+  </div>
+  <div class="header-show2">
+    <br><br>
+    <%= image_tag 'icon_pen.png' ,size: "20"%><%= link_to "投稿", new_post_path %>
+    <%= link_to "ホームへ戻る", posts_path %>
+    <%= link_to "ユーザー編集ページ", edit_user_registration_path%>
+    <%= link_to 'ログアウト', destroy_user_session_path,:method => :delete %>
+  </div>
+</div>
+<hr>
+<body>
+<div class='information'>
+  <div class='score'>
+    <h3><%= image_tag 'icon_crown.png' %>現在のベストスコア =>
+    <%= @user.best_score %></h3>
+    <br>
+    <h3><%= image_tag 'icon_crown.png' %>目標スコア =>
+    <%= @user.best_score_future %></h3>
+  </div>
+  <div class='memo'>
+      <div class='container-name'>
+        <h4>&emsp;&emsp;&emsp;What is your main focus today?</h4>
+      </div>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= @user.destination %>
+      <br><br><br>
+      <div class='container-name'>
+        <h3><%= image_tag 'icon_brain.png' %> memo(気を付けること)</h3>
+      </div>
+      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= @user.memo %>
+  </div>
+  <div class="calender">
+    <%= month_calendar events: @posts do |date,posts| %>
+      <%= date %>
+      
+      <% if posts != [] %>
+        <%= link_to  post_path(posts[0]) do %> <br>
+        <div class="img"><%= image_tag 'icon_golfball.png',size: "20" %></div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<hr>
+
+<div class="container">
+  <div class='container-name'>
+    <h2><%= image_tag 'icon_memo.png' %>投稿内容</h2>
+    </div>
+  <div class="comment">
+      <% @user.posts.each do |post| %>
+    <div class="comment-container">
+        <div class="comment-image">
+          <% if post.image_url != nil %>
+            &emsp;<%= image_tag post.image_url, :size => "300" %>
+          <% elsif post.video_url != nil  %>
+            &emsp;<%= video_tag post.video_url, loop: true, controls: true, width: 150 %>  
+          <% end %><br>
+        </div>
+        <div class="comment-comment">
+          <%= post.comment %>
+        </div>
+    </div></a>
+        <hr>
+      <% end %>
+  </div>
+  <br><br>
+  <div class='container-name'>
+     <h2><%= image_tag 'icon_memo.png' %>投稿内容</h2>
+    </div>
+  <div class="favorite">
+    <div class="favorite-container">
+      <% @favorite_posts.each do |p| %>
+        <hr>
+        <% if p.image_url != nil %>
+            &emsp;<%= image_tag p.image_url, :size => "300" %>
+          <% elsif t.video_url != nil  %>
+            &emsp;<%= video_tag p.video_url.to_s, loop: true, controls: true, width: 400 %>  
+          <% end %><br>
+
+        <p><span>詳細へ: </span><%=link_to p.comment, post_path(p.id) %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+</body>
 
 
-<h2>投稿内容</h2>
-<% @user.posts.each do |post| %>
-  <a href="/posts/<%= post.id %>"><%= post.comment %></a>
-  <hr>
-<% end %>
-
-<h2>いいね欄</h2>
-<% @favorite_posts.each do |p| %>
-  <hr>
-  <p><span>ファボポスト内容: </span><%=link_to p.comment, post_path(p.id) %></p>
-<% end %>
 
 
 
-
-<%= link_to "投稿", new_post_path %>
-<%= link_to "ホームへ戻る", posts_path %>
-<%= link_to "ユーザー編集ページ", edit_user_registration_path%>
-<%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %>

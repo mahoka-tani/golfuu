@@ -6,5 +6,7 @@ class AddColumnToUsers < ActiveRecord::Migration[5.1]
     add_column :users, :best_score, :integer
     add_column :users, :image, :string
     add_column :users, :gender, :string
+    add_column :users, :calendar, :text
+    add_column :users, :destination, :text
   end
 end
