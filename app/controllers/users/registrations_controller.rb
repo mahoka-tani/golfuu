@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
     user_path(id: current_user.id)
   end
-  GET /resource/sign_up
+  GET '/resource/sign_up'
   def new
     super
   end
