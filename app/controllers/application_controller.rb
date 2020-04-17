@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 # ↑ここまで↑
 
  # ログイン後、blogs/indexに移動する
- def after_sign_in_path_for(resource)
+def after_sign_in_path_for(resource)
   posts_path
 end
 
