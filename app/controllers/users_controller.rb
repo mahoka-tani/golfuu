@@ -13,17 +13,19 @@ class UsersController < ApplicationController
 
       end
     
-  else
-    if params[:tag4_id] == nil
-        @users = User.all
-
-    elsif params[:tag4_id] == ''
-        @users = User.all
-
     else
-       @users = User.where("gender LIKE ? ",'%' + params[:tag4_id] + '%')
+      if params[:tag4_id] == nil
+          @users = User.all
+
+      elsif params[:tag4_id] == ''
+          @users = User.all
+
+      else
+        @users = User.where("gender LIKE ? ",'%' + params[:tag4_id] + '%')
+      end
+    end
   end
-  end
+
 
 
   def show
