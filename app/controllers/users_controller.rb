@@ -11,8 +11,8 @@ class UsersController < ApplicationController
       else
           @users = User.where("age LIKE ? ",'%' + params[:tag3_id] + '%')
 
-    end
-    end
+      end
+    
   else
     if params[:tag4_id] == nil
         @users = User.all
