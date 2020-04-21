@@ -1,0 +1,144 @@
+@charset "UTF-8";
+/* line 5, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+body {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* line 9, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.header-show {
+  color: #ff5c5c;
+  display: flex;
+  height: 12vh;
+  font-family: 'Faldano';
+}
+/* line 15, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.header-show a {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  border-bottom: solid 3px black;
+  border-left: solid 3px black;
+  color: black;
+  transition: .4s;
+}
+/* line 27, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.header-show a:link {
+  color: black;
+}
+/* line 30, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.header-show a:visited {
+  color: black;
+}
+/* line 33, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.header-show a:hover {
+  color: #ff5c5c;
+  background-color: transparent;
+}
+
+/* line 39, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.header-show1 {
+  width: 60vw;
+  text-shadow: 1px 1px 0 black, -1px -1px 0 black, -1px 1px 0 black, 1px -1px 0 black, 0px 1px 0 black, 0px -1px 0 black, -1px 0 0 black, 1px 0 0 black;
+}
+
+/* line 46, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.header-show2 {
+  color: #ff5c5c;
+}
+
+/* line 50, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+body {
+  background-color: #999999;
+}
+
+/* line 55, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.information {
+  display: flex;
+  height: 75vh;
+}
+
+/* line 60, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.score {
+  width: 30vw;
+  text-align: center;
+}
+
+/* line 65, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.container {
+  justify-content: space-between;
+}
+
+/* line 69, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.memo {
+  width: 35vw;
+  background-color: #E1E1E1;
+  border-radius: 10%;
+}
+
+/* line 75, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.calendar {
+  height: 20vh;
+  background-color: #ffffff;
+}
+
+/* line 80, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.img {
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+}
+
+/* line 86, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+div.img {
+  margin-top: 10px;
+}
+
+/* line 91, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+div.img:hover {
+  background-color: #ff5c5c;
+  border-radius: 100px;
+}
+
+/* line 97, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.comment {
+  height: 20%;
+  background-color: #E1E1E1;
+  border-radius: 10%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* line 105, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.comment-container {
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10%;
+  width: 32vw;
+}
+
+/* line 112, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.favorite {
+  height: 20%;
+  background-color: #E1E1E1;
+  border-radius: 10%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* line 120, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.favorite-container {
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10%;
+  width: 32vw;
+}
+
+/* line 127, C:/Users/mahok/OneDrive/デスクトップ/golfuu/app/assets/stylesheets/users.scss */
+.container-name {
+  color: #ff5c5c;
+  font-weight: bold;
+  border-color: black;
+  text-shadow: 0.7px 0.7px 0 black, -0.7px -0.7px 0 black, -0.7px 0.7px 0 black, 0.7px -0.7px 0 black, 0px 0.7px 0 black, 0px -0.7px 0 black, -0.7px 0 0 black, 0.7px 0 0 black;
+}
