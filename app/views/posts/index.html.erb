@@ -20,20 +20,13 @@
 
       <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
             <%= select_tag :tag_id,
-                          options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                          options_from_collection_for_select(Tag.all, :name, :name, params[:tag_id]),
                           {
                             prompt: 'タグで絞り込み検索',
                             onchange: 'submit(this.form);'
                           }
             %>
       <% end %><br>
-
-      <%# <%= form_for @posts do |f| %>
-        <%# <%= f.label :tag_id %> 
-        <%# <%= f.collection_select :tag_id, Tag.all, :id, :name %> 
-      <%# <% end %> 
-      <%# <%=f.select :level, [["121以上(初心者・コースデビューを目指す)","121以上(初心者・コースデビューを目指す)"],["100切りゴルファーを目指す","100切りゴルファーを目指す"],["91-99(ドライバーショット、アプローチを強化したい","91-99(ドライバーショット、アプローチを強化したい"],["70代を目指す","70代を目指す"],["トップアマ、競技志向レベル","トップアマ、競技志向レベル"]] %> 
-       <%# <%= f.submit %> 
 
       <h2><%= image_tag 'icon_search1.png',size: "60" %>"あなたのお悩み"から</h2>
 
