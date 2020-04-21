@@ -28,6 +28,11 @@
             %>
       <% end %><br>
 
+      <%= form_for @posts do |f| %>
+        <%= f.label :tag_id %>
+        <%= f.collection_select :tag_id, Tag.all, :id, :name %>
+      <%- end -%>
+
       <h2><%= image_tag 'icon_search1.png',size: "60" %>"あなたのお悩み"から</h2>
 
       <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
