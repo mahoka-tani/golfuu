@@ -32,7 +32,7 @@
 
       <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
             <%= select_tag :tag2_id,
-                          options_from_collection_for_select(Tag2.all, :name, :name, params[:tag2_id]),
+                          options_from_collection_for_select(Tag2.all, :id, :name, params[:tag2_id]),
                           {
                             prompt: 'タグで絞り込み検索',
                             onchange: 'submit(this.form);'
@@ -46,7 +46,7 @@
 
       <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
             <%= select_tag :tag3_id,
-                          options_from_collection_for_select(Tag3.all, :id, :name, params[:tag3_id]),
+                          options_from_collection_for_select(Tag3.all, :name, :name, params[:tag3_id]),
                           {
                             prompt: 'タグで絞り込み検索',
                             onchange: 'submit(this.form);'
@@ -58,7 +58,7 @@
 
       <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
             <%= select_tag :tag4_id,
-                          options_from_collection_for_select(Tag4.all, :id, :name, params[:tag4_id]),
+                          options_from_collection_for_select(Tag4.all, :name, :name, params[:tag4_id]),
                           {
                             prompt: 'タグで絞り込み検索',
                             onchange: 'submit(this.form);'
